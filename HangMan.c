@@ -4,51 +4,6 @@
 #include <unistd.h>
 #include <string.h>
 
-void MainGame() {
-    const char *WordBank[] = {"able", "about", "box", "mouse", "computer", "car", "government"};
-    int tries = 7;
-    int correct = 0;
-
-    int gen = rand() % 7;
-    const char *Word = WordBank[gen];
-    int hide = strlen(Word);
-
-    for (int i = 0; i < hide; ++i) {
-        printf("x");
-    }
-    printf("\n");
-
-    while (tries != 0) {
-        char guess;
-        printf("Guess a letter: ");
-        scanf(" %c", &guess);
-
-        // Clear the input buffer
-        while (getchar() != '\n');
-
-        int found = 0;
-        for (int i = 0; i < hide; ++i) {
-            if (guess == Word[i]) {
-                printf("That letter is in the word\n");
-                correct++;
-                found = 1;
-                break;
-            }
-        }
-
-        if (!found) {
-            printf("You lost a body part\n");
-            tries--;
-        }
-
-        if (tries == 0) {
-            printf("You lose!\n");
-        } else if (correct == hide) {
-            printf("You win!\n");
-            break;
-        }
-    }
-}
 
 /// revamo
 ///
@@ -71,7 +26,7 @@ void HangManGame(){
     printf("\n");
     char UserInput;
     
-    printf("Guess a word \n");
+    printf("Guess a letter \n");
     scanf("%c", &UserInput);
     while(getchar() != '\n');
 
